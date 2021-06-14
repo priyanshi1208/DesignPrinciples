@@ -21,7 +21,10 @@ public class CSVStateCensusAnalyzer {
             Iterator<CSVStateCensus> iterator = CsvToBean.iterator();
             Iterable<CSVStateCensus> iterable = () -> iterator;
             count = (int) StreamSupport.stream(iterable.spliterator(), false).count();
-        }catch(IOException e){
+        } catch(IOException e){
+            if(!filePath.contains(".csv"))
+                throw new CustomExceptionsCsvFile(CustomExceptionsCsvFile
+                        .ExceptionType.Invalid_FileType,"Invalid file extension");
             throw new CustomExceptionsCsvFile(CustomExceptionsCsvFile
                     .ExceptionType.Invalid_FilePath,"Invalid file path entered");
         }
