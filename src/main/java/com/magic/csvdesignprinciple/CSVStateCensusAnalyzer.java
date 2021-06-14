@@ -23,10 +23,4 @@ public class CSVStateCensusAnalyzer {
         Iterable<CSVStateCensus> iterable=()->iterator;
         return (int) StreamSupport.stream(iterable.spliterator(), false).count();
     }
-
-    public static void main(String[] args) {
-        CSVStateCensusAnalyzer c=new CSVStateCensusAnalyzer();
-        int dataFromCSVfile = c.loadCensusDataFromCSVfile("C:\\Users\\ayuanshi\\Downloads\\StateCensusData.csv");
-        System.out.println(dataFromCSVfile);
-    }
 }
