@@ -40,7 +40,7 @@ public class CSVStateCensusAnalyzerTest {
     public void validating_if_exception_arises_and_handles_if_file_has_different_header()throws CustomExceptionsCsvFile {
         try {
             CSVStateCensusAnalyzer csvStateCensusAnalyzer = new CSVStateCensusAnalyzer();
-            csvStateCensusAnalyzer.loadCensusDataFromCSVfile("C:\\Users\\ayuanshi\\Downloads\\StateCensusData1.xlsx");
+            csvStateCensusAnalyzer.loadCensusDataFromCSVfile("C:\\Users\\ayuanshi\\Downloads\\StateCensusData.csv");
         }catch(CustomExceptionsCsvFile e){
             Assert.assertEquals(CustomExceptionsCsvFile.ExceptionType.Invalid_Header,e.exceptionType);
         }
