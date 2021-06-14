@@ -21,4 +21,13 @@ public class CSVStateCensusAnalyzerTest {
         Assert.assertEquals(CustomExceptionsCsvFile.ExceptionType.Invalid_FilePath,e.exceptionType);
        }
     }
+    @Test
+    public void validating_if_exception_arises_and_handles_if_invalid_file_arrises()throws CustomExceptionsCsvFile {
+        try {
+            CSVStateCensusAnalyzer csvStateCensusAnalyzer = new CSVStateCensusAnalyzer();
+            csvStateCensusAnalyzer.loadCensusDataFromCSVfile("C:\\Users\\ayuanshi\\Downloads\\StateCensusData.doc");
+        }catch(CustomExceptionsCsvFile e){
+            Assert.assertEquals(CustomExceptionsCsvFile.ExceptionType.Invalid_FileType,e.exceptionType);
+        }
+    }
 }
