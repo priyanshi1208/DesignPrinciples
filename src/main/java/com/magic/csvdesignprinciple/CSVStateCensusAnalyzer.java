@@ -2,6 +2,7 @@ package com.magic.csvdesignprinciple;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -20,10 +21,9 @@ public class CSVStateCensusAnalyzer {
             Iterator<CSVStateCensus> iterator = CsvToBean.iterator();
             Iterable<CSVStateCensus> iterable = () -> iterator;
             count = (int) StreamSupport.stream(iterable.spliterator(), false).count();
-        }catch(NoSuchFileException e){
-            throw new CustomExceptionsCsvFile(CustomExceptionsCsvFile.ExceptionType.Invalid_FilePath,"Enter a valid file path");
         }catch(IOException e){
-            e.printStackTrace();
+            throw new CustomExceptionsCsvFile(CustomExceptionsCsvFile
+                    .ExceptionType.Invalid_FilePath,"Invalid file path entered");
         }
         return count;
     }
