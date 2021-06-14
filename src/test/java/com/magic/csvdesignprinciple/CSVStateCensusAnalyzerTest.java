@@ -30,4 +30,13 @@ public class CSVStateCensusAnalyzerTest {
             Assert.assertEquals(CustomExceptionsCsvFile.ExceptionType.Invalid_FileType,e.exceptionType);
         }
     }
+    @Test
+    public void validating_if_exception_arises_and_handles_if_file_has_different_delimeters()throws CustomExceptionsCsvFile {
+        try {
+            CSVStateCensusAnalyzer csvStateCensusAnalyzer = new CSVStateCensusAnalyzer();
+            csvStateCensusAnalyzer.loadCensusDataFromCSVfile("C:\\Users\\ayuanshi\\Downloads\\StateCensusData1.xlsx");
+        }catch(CustomExceptionsCsvFile e){
+            Assert.assertEquals(CustomExceptionsCsvFile.ExceptionType.Invalid_Delimiter,e.exceptionType);
+        }
+    }
 }

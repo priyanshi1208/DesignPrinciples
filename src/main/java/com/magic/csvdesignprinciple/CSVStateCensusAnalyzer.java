@@ -1,4 +1,5 @@
 package com.magic.csvdesignprinciple;
+import com.opencsv.CSVParser;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.BufferedReader;
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
@@ -27,6 +29,9 @@ public class CSVStateCensusAnalyzer {
                         .ExceptionType.Invalid_FileType,"Invalid file extension");
             throw new CustomExceptionsCsvFile(CustomExceptionsCsvFile
                     .ExceptionType.Invalid_FilePath,"Invalid file path entered");
+        }catch(InputMismatchException e){
+            throw new CustomExceptionsCsvFile(CustomExceptionsCsvFile
+                    .ExceptionType.Invalid_Delimiter,"File does not contains specified delimiter");
         }
         return count;
     }
